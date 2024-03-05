@@ -1,6 +1,6 @@
 setting:
-  帐户:
-    email: xxxx
+  account:
+    email: xxxx@163.com
     global_api_key: xxxx
     zone_id: xxxx
   CFST:
@@ -13,7 +13,7 @@ setting:
     tl: 300    # 平均延迟上限；只输出低于指定平均延迟的 IP，各上下限条件可搭配使用
     tll: 20    # 平均延迟下限；只输出高于指定平均延迟的 IP
     tlr: 0.3   # 丢包几率上限；只输出低于/等于指定丢包率的 IP，范围 0.00~1.00，0 过滤掉任何丢包的 IP；(默认 1.00)
-    sl: 3      # 下载速度下限；只输出高于指定下载速度的 IP，凑够指定数量 [-dn] 才会停止测速；(默认 0.00 MB/s)
+    sl: 2      # 下载速度下限；只输出高于指定下载速度的 IP，凑够指定数量 [-dn] 才会停止测速；(默认 0.00 MB/s)
 
 SpeedTest:
   HK:
