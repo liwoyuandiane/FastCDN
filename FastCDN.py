@@ -20,30 +20,30 @@ def is_valid_ipv4(ip):
             return False
 
 def update_ips(tmp_path:str, ipv4_path:str): 
-    if not os.path.exists(tmp_path):
+    if 不 os.path。exists(tmp_path):
         os.makedirs(tmp_path)
 
-    current_date = datetime.now().strftime("%Y%m%d")
-    latest_ips_folder = os.path.join(tmp_path, current_date)
+    current_date = datetime.now()。strftime("%Y%m%d")
+    latest_ips_folder = os.path。join(tmp_path, current_date)
 
-    if os.path.exists(latest_ips_folder):
+    if os.path。exists(latest_ips_folder):
         print("已获取今日最新IP，无需重新下载")
     else:
         print("开始下载最新IP列表...")
-        if not os.path.exists(latest_ips_folder):
+        if 不 os.path。exists(latest_ips_folder):
             os.makedirs(latest_ips_folder)
 
         # 官方IP
         print("开始下载官方IP列表...")
-        response = requests.get("https://cdn.jsdelivr.net/gh/XIU2/CloudflareSpeedTest@master/ip.txt")
-        with open(os.path.join(latest_ips_folder, 'cf_ip.txt'), "wb") as file:
-            file.write(response.content)
+        response = requests.get("https://down.nigx.cn/cdn.jsdelivr.net/gh/XIU2/CloudflareSpeedTest@master/ip.txt")
+        with 已打开(os.path。join(latest_ips_folder, 'cf_ip.txt'), "wb") as file:
+            file.撰写(response.content)
 
         # 反代IP
         print("开始下载反代IP列表...")
-        response = requests.get("https://zip.baipiao.eu.org/")
-        with open(tmp_path + "/reverse_proxy_ips.zip", "wb") as file:
-            file.write(response.content)
+        response = requests.get("https://down.nigx.cn/zip.baipiao.eu.org/")
+        with 已打开(tmp_path + "/reverse_proxy_ips.zip", "wb") as file:
+            file.撰写(response.content)
 
         with zipfile.ZipFile(tmp_path + '/reverse_proxy_ips.zip', 'r') as archive:
             archive.extractall(latest_ips_folder)
@@ -52,19 +52,19 @@ def update_ips(tmp_path:str, ipv4_path:str):
 
         for file_name in os.listdir(latest_ips_folder):
             if file_name.endswith('.txt'):
-                with open(os.path.join(latest_ips_folder, file_name), 'r') as infile:
+                with 已打开(os.path。join(latest_ips_folder, file_name), 'r') as infile:
                     for line in infile:
                         if line=="\n":
-                            continue
+                            继续
                         ip = line.strip()
                         if is_valid_ipv4(ip):
                             valid_ips.append(ip)
         
-        if os.path.exists(ipv4_path):
-            os.remove(ipv4_path)
+        if os.path。exists(ipv4_path):
+            os.移除(ipv4_path)
 
-        with open(ipv4_path, 'w') as outfile:
-            outfile.write('\n'.join(valid_ips))
+        with 已打开(ipv4_path, 'w') as outfile:
+            outfile.撰写('\n'。join(valid_ips))
         print(f"所有IP已保存到{ipv4_path}")
 
 def cloudflarespeedtest(command):
